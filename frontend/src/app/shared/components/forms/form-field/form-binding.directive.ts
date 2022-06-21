@@ -1,6 +1,6 @@
 import { Directive, forwardRef, Input } from '@angular/core';
 import {
-  FormArray, FormControl, FormGroup, NgControl,
+  UntypedFormArray, UntypedFormControl, UntypedFormGroup, NgControl,
 } from '@angular/forms';
 
 export const formControlBinding:any = {
@@ -14,9 +14,9 @@ export const formControlBinding:any = {
   exportAs: 'ngForm',
 })
 export class OpFormBindingDirective extends NgControl {
-  @Input('opFormBinding') form!:FormControl|FormGroup|FormArray;
+  @Input('opFormBinding') form!:UntypedFormControl|UntypedFormGroup|UntypedFormArray;
 
-  get control():FormControl|FormGroup|FormArray {
+  get control():UntypedFormControl|UntypedFormGroup|UntypedFormArray {
     return this.form;
   }
 

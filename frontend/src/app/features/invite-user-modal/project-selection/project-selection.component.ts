@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -70,9 +70,9 @@ export class ProjectSelectionComponent implements OnInit {
     },
   ];
 
-  projectAndTypeForm = new FormGroup({
-    type: new FormControl(PrincipalType.User, [Validators.required]),
-    project: new FormControl(null, [Validators.required], ProjectAllowedValidator(this.currentUserService)),
+  projectAndTypeForm = new UntypedFormGroup({
+    type: new UntypedFormControl(PrincipalType.User, [Validators.required]),
+    project: new UntypedFormControl(null, [Validators.required], ProjectAllowedValidator(this.currentUserService)),
   });
 
   get typeControl():AbstractControl {

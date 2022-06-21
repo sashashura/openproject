@@ -3,8 +3,8 @@ import {
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
-  FormGroup,
-  FormControl,
+  UntypedFormGroup,
+  UntypedFormControl,
   Validators,
 } from '@angular/forms';
 import { take } from 'rxjs/internal/operators/take';
@@ -76,9 +76,9 @@ export class PrincipalComponent implements OnInit {
     nextButton: this.I18n.t('js.invite_user_modal.principal.next_button'),
   };
 
-  public principalForm = new FormGroup({
-    principal: new FormControl(null, [Validators.required]),
-    userDynamicFields: new FormGroup({}),
+  public principalForm = new UntypedFormGroup({
+    principal: new UntypedFormControl(null, [Validators.required]),
+    userDynamicFields: new UntypedFormGroup({}),
   });
 
   public userDynamicFieldConfig:{

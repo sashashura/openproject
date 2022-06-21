@@ -4,7 +4,7 @@ import {
   Input,
   ElementRef,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Observable, Subject, combineLatest } from 'rxjs';
 import {
   debounceTime, distinctUntilChanged, filter, map,
@@ -19,7 +19,7 @@ import { ApiV3FilterBuilder } from 'core-app/shared/helpers/api-v3/api-v3-filter
   templateUrl: './role-search.component.html',
 })
 export class RoleSearchComponent extends UntilDestroyedMixin implements OnInit {
-  @Input('opFormBinding') roleControl:FormControl;
+  @Input('opFormBinding') roleControl:UntypedFormControl;
 
   public input$ = new Subject<string|null>();
 

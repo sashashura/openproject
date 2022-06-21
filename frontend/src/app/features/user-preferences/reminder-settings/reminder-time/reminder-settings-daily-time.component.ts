@@ -16,9 +16,9 @@ import {
 } from 'rxjs';
 import { UserPreferencesService } from 'core-app/features/user-preferences/state/user-preferences.service';
 import {
-  FormArray,
-  FormControl,
-  FormGroup,
+  UntypedFormArray,
+  UntypedFormControl,
+  UntypedFormGroup,
   FormGroupDirective,
 } from '@angular/forms';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
@@ -41,7 +41,7 @@ export class ReminderSettingsDailyTimeComponent implements OnInit {
   // Upon a reload of the page, it is accepted to loose this information.
   public inactiveTimes:Array<{ position:number, time:string }> = [];
 
-  public form:FormGroup;
+  public form:UntypedFormGroup;
 
   // Hours suggested if a new time is added by a user.
   public suggestedTimes = ['08:00', '12:00', '15:00', '18:00'];
@@ -82,7 +82,7 @@ export class ReminderSettingsDailyTimeComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.form = this.rootFormGroup.control.get('dailyReminders') as FormGroup;
+    this.form = this.rootFormGroup.control.get('dailyReminders') as UntypedFormGroup;
 
     this.enabled$ = this
       .form
@@ -95,12 +95,12 @@ export class ReminderSettingsDailyTimeComponent implements OnInit {
 
     this.selectedTimes$ = (this
       .form
-      .get('times') as FormArray)
+      .get('times') as UntypedFormArray)
       .valueChanges
       .pipe(
-        startWith(() => this.form.get('times')?.value as FormArray),
+        startWith(() => this.form.get('times')?.value as UntypedFormArray),
         map(() => {
-          const timesArray = this.form.get('times') as FormArray;
+          const timesArray = this.form.get('times') as UntypedFormArray;
           const activeTimes = timesArray.controls.map((c) => c.value as string);
 
           this
@@ -210,10 +210,10 @@ export class ReminderSettingsDailyTimeComponent implements OnInit {
           .includes(selected),
       );
 
-    const timesForm = this.form.get('times') as FormArray;
+    const timesForm = this.form.get('times') as UntypedFormArray;
     timesForm.clear({ emitEvent: false });
     times.forEach((time) => {
-      timesForm.push(new FormControl(time), { emitEvent: false });
+      timesForm.push(new UntypedFormControl(time), { emitEvent: false });
     });
 
     timesForm.enable({ emitEvent: true });

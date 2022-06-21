@@ -8,8 +8,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import {
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
 } from '@angular/forms';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
 import { ProjectResource } from 'core-app/features/hal/resources/project-resource';
@@ -51,8 +51,8 @@ export class MessageComponent implements OnInit {
     nextButton: this.I18n.t('js.invite_user_modal.message.next_button'),
   };
 
-  messageForm = new FormGroup({
-    message: new FormControl(''),
+  messageForm = new UntypedFormGroup({
+    message: new UntypedFormControl(''),
   });
 
   get messageControl() {

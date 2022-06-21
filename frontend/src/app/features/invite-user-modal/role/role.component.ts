@@ -6,8 +6,8 @@ import {
   Output,
 } from '@angular/core';
 import {
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -52,8 +52,8 @@ export class RoleComponent implements OnInit {
     nextButton: this.I18n.t('js.invite_user_modal.role.next_button'),
   };
 
-  roleForm = new FormGroup({
-    role: new FormControl(null, [Validators.required]),
+  roleForm = new UntypedFormGroup({
+    role: new UntypedFormControl(null, [Validators.required]),
   });
 
   get roleControl() {
