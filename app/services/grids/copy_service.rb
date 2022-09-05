@@ -51,7 +51,7 @@ module Grids
 
     protected
 
-    def initialize_copy(source, params)
+    def initialize_copy(params)
       grid = source.dup
 
       initialize_new_grid! grid, source, params

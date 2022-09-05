@@ -37,7 +37,7 @@ module Queries
 
     protected
 
-    def initialize_copy(source, _params)
+    def set_attributes(_params)
       new_query = ::Query.new source.attributes.dup.except(*skipped_attributes)
       new_query.sort_criteria = source.sort_criteria if source.sort_criteria
       new_query.project = state.project || source.project
@@ -46,7 +46,8 @@ module Queries
         .new(state, new_query.filters)
         .map_filters!
 
-      ServiceResult.new(success: new_query.save, result: new_query)
+
+      ServiceResult.new(success: new_query.valid?, result: new_query)
     end
 
     def skipped_attributes
