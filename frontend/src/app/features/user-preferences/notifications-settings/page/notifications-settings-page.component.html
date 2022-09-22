@@ -16,18 +16,29 @@
       />
       <p slot="description">{{ text.mentioned.description }}</p>
   </op-checkbox-field>
-
+ 
   <op-checkbox-field
-    [label]="text.involved.title"
-    [control]="form.get('involved')"
+    [label]="text.assignee"
+    [control]="form.get('assignee')"
   >
     <input
       slot="input"
       type="checkbox"
-      formControlName="involved"
-      data-qa-global-notification-type="involved"
+      formControlName="assignee"
+      data-qa-global-notification-type="assignee"
     />
-    <p slot="description">{{ text.involved.description }}</p>
+  </op-checkbox-field>
+
+  <op-checkbox-field
+    [label]="text.accountable"
+    [control]="form.get('accountable')"
+  >
+    <input
+      slot="input"
+      type="checkbox"
+      formControlName="accountable"
+      data-qa-global-notification-type="accountable"
+    />
   </op-checkbox-field>
 
   <h5>{{ text.alsoNotifyFor.title }}</h5>

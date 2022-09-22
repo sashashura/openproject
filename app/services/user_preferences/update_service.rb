@@ -90,7 +90,8 @@ module UserPreferences
             conflict_target:,
             index_predicate:,
             columns: %i[watched
-                        involved
+                        assignee
+                        accountable
                         mentioned
                         work_package_commented
                         work_package_created
